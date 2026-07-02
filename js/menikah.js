@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if (openBtn) {
     openBtn.addEventListener("click", function() {
       // Putar lagu
-      music.volume = 0.4;
+      music.volume = 0.6;
       music.play().catch(function(error) {
         console.log("Audio tidak dapat diputar:", error);
       });

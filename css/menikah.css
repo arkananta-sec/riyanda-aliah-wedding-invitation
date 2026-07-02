@@ -844,3 +844,75 @@ body.preloader-site {
 .main-content .section-dark {
   padding-top: 60px !important;
 }
+
+/* =========================================
+   PENGATURAN RESPONSIF (HP & IPAD)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+  
+  /* 1. Menyesuaikan Ukuran Teks Sampul (Cover) */
+  .cover-title {
+    font-size: 3rem !important; 
+  }
+  .cover-subtitle {
+    font-size: 0.9rem !important;
+  }
+  .btn-open-invitation {
+    font-size: 1rem !important;
+    padding: 10px 25px !important;
+  }
+
+  /* 2. Menyesuaikan Judul Utama (Hero) */
+  .hero .title {
+    font-size: 3.2rem !important;
+  }
+  .hero .subtitle, 
+  .hero .tempatwaktu {
+    font-size: 1rem !important;
+    padding: 15px !important;
+  }
+
+  /* 3. Menyesuaikan Ukuran Teks Nama Mempelai */
+  .nama-lengkap {
+    font-size: 2.2rem !important;
+  }
+  .ampersand {
+    font-size: 2.5rem !important;
+    margin: 5px 0 !important;
+  }
+
+  /* 4. Menyesuaikan Ukuran Angka Tanggal */
+  .tanggal-angka {
+    font-size: 3.5rem !important;
+  }
+  .waktu {
+    font-size: 1.1rem !important;
+  }
+
+  /* 5. Merapikan Grid Foto (Agar tidak terlalu panjang di HP) */
+  .foto1, .foto2, .foto4, .foto5 {
+    min-height: 20rem !important;
+  }
+  .foto3 {
+    min-height: 28rem !important; /* Foto sentral tetap sedikit lebih tinggi */
+  }
+
+  /* 6. Menyesuaikan Tombol RSVP */
+  .btn-whatsapp {
+    width: 100% !important; /* Tombol akan menyesuaikan lebar layar HP */
+    max-width: 300px;
+    font-size: 1rem !important;
+    height: 55px !important;
+  }
+}
+
+/* Pengaturan Tambahan Khusus Layar Sangat Kecil (iPhone SE / HP Lama) */
+@media screen and (max-width: 400px) {
+  .hero .title {
+    font-size: 2.8rem !important;
+  }
+  .nama-lengkap {
+    font-size: 1.8rem !important;
+  }
+}g
