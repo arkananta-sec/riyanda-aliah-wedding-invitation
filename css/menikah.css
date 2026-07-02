@@ -1009,3 +1009,54 @@ body.preloader-site {
     letter-spacing: 1px;
   }
 }
+
+#hitungmundur li.separator {
+  display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  
+  /* 2. Mengecilkan font nama agar muat presisi satu baris di HP */
+  .name-hero {
+    font-size: 2.2rem !important; /* Diperkecil dari 3.5rem */
+    line-height: 1.2 !important;
+    padding: 0 5px !important;
+  }
+  
+  .ampersand-hero {
+    font-size: 2rem !important;
+    margin: 5px 0 !important;
+  }
+
+  /* 3. Merapikan Countdown agar sejajar rapi 1 baris */
+  #hitungmundur {
+    display: flex !important;
+    flex-wrap: nowrap !important; /* Memaksa kotak sejajar mendatar, tidak turun baris */
+    justify-content: center !important;
+    gap: 6px !important; /* Jarak antar kotak dirapatkan */
+  }
+  
+  #hitungmundur li:not(.separator) {
+    min-width: 65px !important; 
+    padding: 10px 5px !important;
+  }
+  
+  #hitungmundur li span {
+    font-size: 1.4rem !important; /* Angka timer diperkecil agar pas */
+  }
+  
+  #hitungmundur li p {
+    font-size: 0.65rem !important;
+    margin-top: 5px !important;
+  }
+}
+
+/* Tambahan ekstra untuk iPhone ukuran kecil (seperti iPhone SE) */
+@media screen and (max-width: 380px) {
+  .name-hero {
+    font-size: 1.9rem !important;
+  }
+  #hitungmundur li:not(.separator) {
+    min-width: 58px !important; 
+  }
+}

@@ -72,3 +72,22 @@ $(document).ready(function($) {
 $(window).on('load', function() {
   $("body").removeClass("preloader-site");
 });
+
+// ==========================================
+// Fitur Jeda Musik Saat Pindah Tab / Minimize
+// ==========================================
+document.addEventListener("visibilitychange", function() {
+  const music = document.getElementById("bgMusic");
+  
+  if (document.hidden) {
+    // Jika user pindah tab atau minimize browser, lagu di-pause
+    music.pause();
+  } else {
+    // Jika user kembali ke website DAN halaman cover sudah dibuka (body tidak terkunci)
+    if (!document.body.classList.contains("locked")) {
+      music.play().catch(function(error) {
+        console.log("Audio play failed:", error);
+      });
+    }
+  }
+});
