@@ -6,7 +6,7 @@
 }
 
 /* ==========================================================================
-   Cover Screen / Landing Page Styles
+  Cover Screen / Landing Page Styles
    ========================================================================== */
 
 /* Mengunci scroll sebelum undangan dibuka */
@@ -724,13 +724,13 @@ body.preloader-site {
   min-height: 35rem;
 }
 
-.title-foto {
+/* .title-foto {
   font-size: 18pt;
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   text-align: left;
   color: white;
-}
+} */
 
 
 .subtitle-foto {
@@ -738,7 +738,7 @@ body.preloader-site {
   font-weight: 700;
   font-size: 14pt;
   font-weight: 600;
-  margin-top: 15px;
+  /* margin-top: 15px; */
   text-align: left;
   color: white;
 }
@@ -915,4 +915,97 @@ body.preloader-site {
   .nama-lengkap {
     font-size: 1.8rem !important;
   }
-}g
+}
+
+/* =========================================
+   PERCANTIK HERO SECTION & COUNTDOWN
+   ========================================= */
+
+/* Tipografi Subtitle Atas */
+.tracking-wide {
+  letter-spacing: 5px;
+  font-size: 1rem !important;
+  margin-bottom: 20px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Tipografi Nama Mempelai */
+.name-hero {
+  font-family: 'Rouge Script', cursive !important;
+  font-size: 5.5rem !important;
+  margin-bottom: 0 !important;
+  line-height: 1.1 !important;
+  color: white !important;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  transform: none !important; /* Menghilangkan kemiringan aneh bawaan template */
+}
+
+.ampersand-hero {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.5rem;
+  font-style: italic;
+  margin: 10px 0;
+  color: #D8A9A8; /* Aksen warna pink undangan */
+}
+
+/* Mempercantik Countdown Box (Glassmorphism) */
+.countdown-wrapper {
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+
+#hitungmundur {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 0;
+  list-style: none;
+}
+
+#hitungmundur li {
+  background: rgba(255, 255, 255, 0.15); /* Efek transparan */
+  backdrop-filter: blur(8px); /* Efek kaca blur */
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 15px 10px;
+  min-width: 80px;
+  text-align: center;
+}
+
+#hitungmundur li span {
+  font-size: 2.2rem;
+  font-weight: 700;
+  display: block;
+  line-height: 1;
+  color: white;
+}
+
+#hitungmundur li p {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsif untuk Layar HP */
+@media screen and (max-width: 768px) {
+  .name-hero {
+    font-size: 3.5rem !important;
+  }
+  #hitungmundur {
+    gap: 8px;
+  }
+  #hitungmundur li {
+    min-width: 65px;
+    padding: 10px 5px;
+  }
+  #hitungmundur li span {
+    font-size: 1.6rem;
+  }
+  #hitungmundur li p {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+}
