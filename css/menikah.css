@@ -5,6 +5,106 @@
   justify-content: center;
 }
 
+/* ==========================================================================
+   Cover Screen / Landing Page Styles
+   ========================================================================== */
+
+/* Mengunci scroll sebelum undangan dibuka */
+body.locked {
+  overflow: hidden; 
+}
+
+.cover-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Menggunakan gambar hero sebagai background cover */
+  background: linear-gradient(rgba(153, 110, 109, 0.7), rgba(0, 0, 0, 0.6)), url("https://picsum.photos/id/381/1920/1080") no-repeat center center;
+  background-size: cover;
+  z-index: 9999; /* Berada di bawah preloader, tapi di atas konten utama */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.cover-content {
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(20px);
+  animation: fadeUpCover 1s ease forwards;
+}
+
+@keyframes fadeUpCover {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cover-title {
+  font-family: 'Rouge Script', sans-serif !important;
+  font-size: 4.5rem !important;
+  color: white !important;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.cover-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.1rem;
+  color: #F4E2E2 !important;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+}
+
+.btn-open-invitation {
+  background-color: transparent;
+  color: white;
+  border: 2px solid #F4E2E2;
+  border-radius: 30px;
+  padding: 12px 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn-open-invitation i {
+  margin-right: 8px;
+}
+
+.btn-open-invitation:hover {
+  background-color: #F4E2E2;
+  color: #996E6D;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Memastikan preloader berada di urutan paling atas */
+.preloader-wrapper {
+  z-index: 10000;
+}
+
+.btn-cta,
+.btn-whatsapp{
+    transition: .3s ease;
+    cursor: pointer;
+}
+
+.btn-cta:hover,
+.btn-whatsapp:hover{
+    transform: translateY(-3px);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -13,10 +113,16 @@ html {
   font-family: 'Raleway', Tahoma, sans-serif;
   width: 100%;
   min-height: 100%;
+  scroll-behavior:smooth;
 }
 
 .header-wrapper {
   padding-bottom: 30px;
+}
+
+.navbar{
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(10px);
 }
 
 .navbar-item {
@@ -38,16 +144,15 @@ html {
 
 
 .hero {
-  background-image: url(https://picsum.photos/id/25/1920/1080);
   background: linear-gradient(rgba(153, 110, 109, 0.65), rgba(153, 110, 109, 0.65)), rgba(0, 0, 0, 0.55) url("https://picsum.photos/id/381/1920/1080") no-repeat;
   background-attachment: fixed;
   background-size: cover;
   color: white;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   font-family: 'Raleway', sans-serif;
+  min-height:100vh;
+  height:auto;
 }
-
-
 
 .hero .title {
   font-family: 'Rouge Script', sans-serif;
@@ -130,14 +235,10 @@ html {
   font-family: 'Raleway', sans-serif;
 }
 
-.main-content .section-dark {
-  background-color: #F4E2E2;
-  padding: 80px 40px;
-}
-
-.main-content .section-darker {
-  background-color: #EDD2D1;
-  padding: 80px 40px;
+.main-content .section-dark,
+.main-content .section-darker,
+.main-content .section-light {
+  padding: 50px 20px !important; /* Dikecilkan dari 80px */
 }
 
 .main-content .section-dark.resume {
@@ -201,10 +302,27 @@ html {
   -webkit-box-shadow: 0 2px 25px 0 rgba(30, 30, 30, 0.1);
   box-shadow: 0 2px 25px 0 rgba(30, 30, 30, 0.1);
 }
-
 .section-map {
-  padding: 0 0 0 0 ;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
 }
+
+.section-map iframe {
+    width: 100%;
+    height: 600px;
+    border: 0;
+    border-radius: 12px;
+}
+
+/* .section-map {
+  padding: 0 0 0 0 ;
+  width:50%;
+  margin-left:auto;
+  margin-right:auto;
+} */
+
 
 .main-content .section-light {
   padding: 80px 40px;
@@ -294,7 +412,8 @@ html {
   text-transform: uppercase;
   font-size: 1.5rem;
   letter-spacing: 0px;
-  padding-bottom: 60px;
+  padding-bottom: 30px !important; /* Dikecilkan dari 60px */
+  margin-bottom: 0;
 }
 
 .nama-lengkap {
@@ -563,58 +682,47 @@ body.preloader-site {
   border-radius: 10px;
 }
 
-
+/* section foto foto */
 .foto1 {
-  background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../image/beatriz-perez-moya-M2T1j-6Fn8w-unsplash.jpg");
+  /* Gradasi diubah agar hanya gelap di atas (untuk teks), dan transparan ke bawah */
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 30%), url("../image/prewed1.jpeg");
   background-size: cover;
-  background-position: center;
-  background-repeat:no-repeat;
-  min-height: 24rem;
+  background-position: ; 
+  background-repeat: no-repeat;
+  min-height: 30rem;
 }
 
-
 .foto2 {
-  background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../image/evelina-friman-hw_sKmjb0ns-unsplash.jpg");
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 30%), url("../image/prewed2.jpeg");
   background-size: cover;
   background-position: center;
-  background-repeat:no-repeat;
-  min-height: 24rem;
+  background-repeat: no-repeat;
+  min-height: 30rem;
 }
 
 .foto3 {
-  background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../image/jeremy-wong-weddings-464ps_nOflw-unsplash.jpg");
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 30%), url("../image/prewed4.jpeg");
   background-size: cover;
   background-position: top;
-  background-repeat:no-repeat;
-  min-height: 24rem;
+  background-repeat: no-repeat;
+  min-height: 60rem;
 }
 
 .foto4 {
-  background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../image/jeremy-wong-weddings-K8KiCHh4WU4-unsplash.jpg");
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 30%), url("../image/prewed3.jpeg");
   background-size: cover;
-  background-position: top;
-  background-repeat:no-repeat;
-  min-height: 24rem;
+  background-position: top; 
+  background-repeat: no-repeat;
+  min-height: 30rem;
 }
 
 .foto5 {
-  background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../image/nathan-dumlao-5BB_atDT4oA-unsplash.jpg");
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 30%), url("../image/prewed3.jpeg");
   background-size: cover;
-  background-position: center;
-  background-repeat:no-repeat;
-  min-height: 24rem;
+  background-position: bottom; /* Sesuaikan nilainya (top, center, atau bottom) sesuai titik fokus foto */
+  background-repeat: no-repeat;
+  min-height: 30rem;
 }
-
-
-.foto6 {
-  background-image: linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("../image/samantha-gades-x40Q9jrEVT0-unsplash.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat:no-repeat;
-  min-height: 24rem;
-}
-
-
 
 .title-foto {
   font-size: 18pt;
@@ -651,4 +759,88 @@ body.preloader-site {
   vertical-align: middle;
   text-align: center;
   padding: 10px;
+}
+
+/* =========================================
+   PERBAIKAN TIPOGRAFI & JARAK NAMA MEMPELAI
+   ========================================= */
+
+.mempelai-wrapper {
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+
+.nama-lengkap {
+  font-size: 3.2rem !important; 
+  line-height: 1.2 !important;
+  padding-bottom: 0 !important;
+}
+
+.ampersand {
+  font-size: 3.5rem !important;
+  line-height: 1 !important;
+  margin: 10px 0;
+}
+
+.bodytext {
+  font-size: 16px !important;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   PERBAIKAN JARAK HERO & PEMBATAS SECTION
+   ========================================= */
+
+/* 1. Mengurangi jarak kosong yang terlalu jauh di Halaman Utama (Hero) */
+.hero.is-large .hero-body {
+  padding-top: 5rem !important;
+  padding-bottom: 3rem !important;
+}
+
+/* 2. Memastikan navigasi menu di bagian bawah Hero tidak terlalu jauh */
+.hero {
+  min-height: 100vh;
+  height: 100vh !important;
+}
+
+/* 3. Mengembalikan ruang bawah agar gambar pembatas antar section muncul kembali */
+.main-content .section-light {
+  padding-top: 50px !important;
+  padding-bottom: 120px !important; /* Ruang ekstra di bawah agar gambar bunga/daun tidak terpotong */
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+.main-content .section-dark,
+.main-content .section-darker {
+  padding: 60px 20px !important;
+}
+
+/* 4. Merapikan posisi gambar garis pembatas (divider) di tengah */
+.divider {
+  margin: 40px auto !important; 
+  display: block !important;
+  max-height: 60px;
+}
+
+/* =========================================
+   PERBAIKAN GARIS PEMBATAS (DIVIDER)
+   ========================================= */
+
+/* 1. Memperbaiki posisi gambar bunga pink agar menempel pas di batas bawah dan tidak terpotong */
+.main-content .section-light {
+  background-position: bottom center !important; 
+  padding-bottom: 150px !important; /* Ruang khusus untuk menampilkan bunga sepenuhnya */
+}
+
+/* 2. Menghilangkan gambar daun yang bertumpuk dengan bunga agar terlihat lebih rapi dan elegan */
+.section-light img.divider {
+  display: none !important;
+}
+
+/* 3. Menambahkan jarak bernapas untuk section WAKTU agar tidak menabrak bunga di atasnya */
+.main-content .section-dark {
+  padding-top: 60px !important;
 }

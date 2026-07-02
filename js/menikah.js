@@ -1,28 +1,46 @@
 // Get that hamburger menu cookin' //
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Get all "navbar-burger" elements
+  // 1. Logika untuk Navbar Burger
   var $navbarBurgers = Array.prototype.slice.call(
     document.querySelectorAll(".navbar-burger"),
     0
   );
-  // Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
-    // Add a click event on each of them
     $navbarBurgers.forEach(function($el) {
       $el.addEventListener("click", function() {
-        // Get the target from the "data-target" attribute
         var target = $el.dataset.target;
         var $target = document.getElementById(target);
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
         $el.classList.toggle("is-active");
         $target.classList.toggle("is-active");
       });
     });
   }
+
+  // 2. Logika Cover Screen & Audio
+  const openBtn = document.getElementById("openInvitation");
+  const coverScreen = document.getElementById("invitationCover");
+  const music = document.getElementById("bgMusic");
+
+  if (openBtn) {
+    openBtn.addEventListener("click", function() {
+      // Putar lagu
+      music.volume = 0.4;
+      music.play().catch(function(error) {
+        console.log("Audio tidak dapat diputar:", error);
+      });
+      
+      // Sembunyikan halaman cover
+      coverScreen.style.opacity = "0";
+      coverScreen.style.visibility = "hidden";
+      
+      // Buka kunci scroll pada body
+      document.body.classList.remove("locked");
+    });
+  }
 });
 
-// Smooth Anchor Scrolling
+// 3. Smooth Anchor Scrolling
 $(document).on("click", 'a[href^="#"]', function(event) {
   event.preventDefault();
   $("html, body").animate(
@@ -33,7 +51,7 @@ $(document).on("click", 'a[href^="#"]', function(event) {
   );
 });
 
-// When the user scrolls down 20px from the top of the document, show the scroll up button
+// 4. Tombol Scroll ke Atas (To Top)
 window.onscroll = function() {
   scrollFunction();
 };
@@ -46,12 +64,11 @@ function scrollFunction() {
   }
 }
 
-// Preloader
+// 5. Preloader
 $(document).ready(function($) {
-  $(".preloader-wrapper").fadeOut();
-  $("body").removeClass("preloader-site");
+  $(".preloader-wrapper").fadeOut(500);
 });
-$(window).load(function() {
-  var Body = $("body");
-  Body.addClass("preloader-site");
+// Hapus preloader-site dari body jika masih ada bawaan CSS
+$(window).on('load', function() {
+  $("body").removeClass("preloader-site");
 });
